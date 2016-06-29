@@ -5,9 +5,6 @@ import peasy.org.apache.commons.math.geometry.*;
 
 import g4p_controls.*;
 
-import processing.opengl.*;
-import com.jogamp.opengl.GL;
-
 // ..::Features to add::..
 // Elevation stored in climate, affecting temperature and plant growth
 // Randomizer randomizing climate
