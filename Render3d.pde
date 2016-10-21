@@ -36,7 +36,7 @@ class IsometricRender implements Render3d {
           int currentBlock = render[x][y][z];
           if(currentBlock != 0) {
             
-            if(currentBlock == 14 || currentBlock == 15) {
+            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
               drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
             } else {
               drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
@@ -118,7 +118,7 @@ class PeasyRender implements Render3d {
           int currentBlock = render[x][y][z];
           if(currentBlock != 0) {
             
-            if(currentBlock == 14 || currentBlock == 15) {
+            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
               drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
             } else {
               drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
