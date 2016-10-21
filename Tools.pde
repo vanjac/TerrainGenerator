@@ -1,47 +1,46 @@
-class Coordinate3d {
-  int x;
-  int y;
-  int z;
+//class Coordinate3d {
+//  int x;
+//  int y;
+//  int z;
   
-  Coordinate3d(int x, int y, int z) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
+//  Coordinate3d(int x, int y, int z) {
+//    this.x = x;
+//    this.y = y;
+//    this.z = z;
+//  }
   
-  Coordinate3d() {
-    x = 0;
-    y = 0;
-    z = 0;
-  }
-}
+//  Coordinate3d() {
+//    x = 0;
+//    y = 0;
+//    z = 0;
+//  }
+//}
 
-
-ArrayList<Coordinate3d> lowestPoints(int[][][] model) {
-  int xLength = model.length;
-  int yLength = model[0].length;
-  int zLength = model[0][0].length;
+//ArrayList<Coordinate3d> lowestPoints(int[][][] model) {
+//  int xLength = model.length;
+//  int yLength = model[0].length;
+//  int zLength = model[0][0].length;
   
-  boolean lowestPointFound = false;
+//  boolean lowestPointFound = false;
   
-  ArrayList lowestPoints = new ArrayList<Coordinate3d>();
+//  ArrayList lowestPoints = new ArrayList<Coordinate3d>();
   
-  for(int z = 0; z < xLength; z++) {
-    for(int y = 0; y < xLength; y++) {
-      for(int x = 0; x < xLength; x++) {
-        if(model[x][y][z] != 0) {
-          lowestPointFound = true;
-          lowestPoints.add(new Coordinate3d(x, y, z));
-        }
-      }
-    }
-    if(lowestPointFound) {
-      break;
-    }
-  }
+//  for(int z = 0; z < zLength; z++) {
+//    for(int y = 0; y < yLength; y++) {
+//      for(int x = 0; x < xLength; x++) {
+//        if(model[x][y][z] != 0) {
+//          lowestPointFound = true;
+//          lowestPoints.add(new Coordinate3d(x, y, z));
+//        }
+//      }
+//    }
+//    if(lowestPointFound) {
+//      break;
+//    }
+//  }
   
-  return lowestPoints;
-}
+//  return lowestPoints;
+//}
 
 void setBlock(int[][][] terrain, float x, float y, float z, int value) {
   if(round(x) >= terrain.length || round(x) < 0 || round(y) >= terrain[0].length || round(y) < 0 || round(z) >= terrain[0][0].length || round(z) < 0) {

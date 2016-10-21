@@ -7,11 +7,6 @@ GButton btnSeason2;
 GButton btnSeason3;
 GButton btnSeason4;
 
-GButton btnRotateRight;
-GButton btnRotateLeft;
-
-GCustomSlider sdrLayers;
-
 GLabel lblSize;
 GCustomSlider sdrSize;
 
@@ -34,15 +29,6 @@ void makeGui() {
   sdrSize = new GCustomSlider(this, width - 256, 16, 256, 48, null);
   sdrSize.setShowDecor(false, false, true, true);
   sdrSize.setLimits(24, 8, 48);
-  
-  //btnRotateLeft = new GButton(this, width - 256, 0, 128, 24, "Rotate Left");
-  //btnRotateRight = new GButton(this, width - 128, 0, 128, 24, "Rotate Right");
-  
-  /*sdrLayers = new GCustomSlider(this, width - 256, 36, 256, 24, null);
-  sdrLayers.setShowDecor(false, true, true, true);
-  sdrLayers.setNbrTicks(size);
-  sdrLayers.setLimits(0, 0, size);
-  sdrLayers.setStickToTicks(true); */
 }
 
 void handleButtonEvents(GButton button, GEvent event) {
@@ -65,13 +51,6 @@ void handleButtonEvents(GButton button, GEvent event) {
   }
   if (button == btnSeason4 && event == GEvent.CLICKED) {
     switchSeason(4);
-  }
-  
-  if (button == btnRotateLeft && event == GEvent.CLICKED) {
-    rotateLeft();
-  }
-  if (button == btnRotateRight && event == GEvent.CLICKED) {
-    rotateRight();
   }
 }
 

@@ -43,17 +43,17 @@ Render3d renderer3d;
 
 
 void setup() {
-  model = new int[0][0][0];
-  //if(displayHeight >= 832) {
+  makeGui();
+}
+
+void settings() {
+  if(displayHeight >= 832) {
     size(768, 768, P3D);
     cubeSize = 12;
-  //} else {
-    //size(512, 512, P3D);
-    //cubeSize = 8;
-  //}
-  
-  makeGui();
-  //handleButtonEvents(btnGenerate, GEvent.CLICKED);
+  } else {
+    size(512, 512, P3D);
+    cubeSize = 8;
+  }
 }
 
 void generateWithSeed(long seed) {
@@ -93,7 +93,6 @@ void createRenderTerrain(SeasonInfo sInfo) {
 }
 
 void render3d() {
-  //Render3d renderer3d = new IsometricRender();
   renderer3d = new PeasyRender(this, cubeSize, size);
   renderDraw();
 }
@@ -112,50 +111,11 @@ void renderDraw() {
 }
 
 void switchSeason(int season) {
-  SeasonInfo sInfo = new SeasonInfo(tInfo, season);
-  sInfo.printInfo();
-  createRenderTerrain(sInfo);
-}
-
-void rotateRight() {
-  int modelLength = model.length;
-  
-  int[][][] newModel = new int[modelLength][modelLength][modelLength];
-  
-  for(int z = 0; z < modelLength; z++) {
-    for(int y = 0; y < modelLength; y++) {
-      for(int x = 0; x < modelLength; x++) {
-        newModel[y][(modelLength - 1) - x][z] = model[x][y][z];
-      }
-    }
+  if(tInfo != null) {
+    SeasonInfo sInfo = new SeasonInfo(tInfo, season);
+    sInfo.printInfo();
+    createRenderTerrain(sInfo);
   }
-  model = newModel;
-  
-  render3d();
-}
-
-void rotateLeft() {
-  int modelLength = model.length;
-  
-  int[][][] newModel = new int[modelLength][modelLength][modelLength];
-  
-  for(int z = 0; z < modelLength; z++) {
-    for(int y = 0; y < modelLength; y++) {
-      for(int x = 0; x < modelLength; x++) {
-        newModel[(modelLength - 1) - y][x][z] = model[x][y][z];
-      }
-    }
-  }
-  model = newModel;
-  
-  render3d();
-}
-
-void drawLogo() {
-  model = new int[size][size][size];
-  new Tree(new Climate()).drawPlant(model, size / 2, size / 2, 0, new SeasonInfo(new TerrainInfo(size), 2));
-  
-  render3d();
 }
 
 void drawBlockTest() {
