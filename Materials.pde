@@ -13,7 +13,7 @@ final int MAT_SAND = 11;
 final int MAT_CLAY = 12;
 
 final int MAT_RED_FLOWER = 14;
-final int MAT_YELLOW_FLOWER = 15;
+final int MAT_YELLOW_FLOWER = 15; // these NEED to be next to each other, see Flower.drawPlant() and Cactus.drawPlant()
 final int MAT_DEAD_LEAVES = 16;
 final int MAT_CACTUS = 17;
 
