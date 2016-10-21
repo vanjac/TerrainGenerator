@@ -41,16 +41,16 @@ void handleButtonEvents(GButton button, GEvent event) {
   }
   
   if (button == btnSeason1 && event == GEvent.CLICKED) {
-    switchSeason(1);
+    switchSeason(SEASON_WINTER);
   }
   if (button == btnSeason2 && event == GEvent.CLICKED) {
-    switchSeason(2);
+    switchSeason(SEASON_SPRING);
   }
   if (button == btnSeason3 && event == GEvent.CLICKED) {
-    switchSeason(3);
+    switchSeason(SEASON_SUMMER);
   }
   if (button == btnSeason4 && event == GEvent.CLICKED) {
-    switchSeason(4);
+    switchSeason(SEASON_FALL);
   }
 }
 

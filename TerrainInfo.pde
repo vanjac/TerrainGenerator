@@ -1,3 +1,9 @@
+final int SEASON_WINTER = 1;
+final int SEASON_SPRING = 2;
+final int SEASON_SUMMER = 3;
+final int SEASON_FALL = 4;
+
+
 class TerrainInfo {
   int size;
   int getSize() {
