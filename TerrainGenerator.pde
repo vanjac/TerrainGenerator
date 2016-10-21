@@ -120,7 +120,7 @@ void switchSeason(int season) {
 
 void drawBlockTest() {
   model = new int[size][size][size];
-  for(int z = 0; z < 18; z++) {
+  for(int z = 0; z < NUM_MATERIALS; z++) {
     for(int y = 0; y < size; y++) {
       for(int x = 0; x < size; x++) {
         model[x][y][z] = z;
