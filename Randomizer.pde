@@ -13,15 +13,15 @@ class ClassicRandomizer implements Randomizer {
   int[] erosionTable;
   void makeErosionTable() {
     erosionTable = new int[9];
-    erosionTable[0] = 2; //Stone
-    erosionTable[1] = 5; //Grass
-    erosionTable[2] = 6; //Dirt
-    erosionTable[3] = 11; //Sand
-    erosionTable[4] = 11; //Sand
-    erosionTable[5] = 11; //Sand
-    erosionTable[6] = 6; //Dirt
-    erosionTable[7] = 12; //Clay
-    erosionTable[8] = 12; //Clay
+    erosionTable[0] = MAT_STONE;
+    erosionTable[1] = MAT_GRASS;
+    erosionTable[2] = MAT_DIRT;
+    erosionTable[3] = MAT_SAND;
+    erosionTable[4] = MAT_SAND;
+    erosionTable[5] = MAT_SAND;
+    erosionTable[6] = MAT_DIRT;
+    erosionTable[7] = MAT_CLAY;
+    erosionTable[8] = MAT_CLAY;
   }
   
   ClassicRandomizer(HeightMapGenerator hmGenerate) {
@@ -125,7 +125,7 @@ class ClassicRandomizer implements Randomizer {
     for(int y = 0; y < size; y++) {
       for(int x = 0; x < size; x++) {
         int erosionTableLevel = round(heightMap[x][y]) + 4;
-        if(erosionTableLevel > 7) {
+        if(erosionTableLevel > 7) { // TODO: Magic number; change to 8?
           erosionTableLevel = 7;
         } else if (erosionTableLevel < 0) {
           erosionTableLevel = 0;
