@@ -72,13 +72,13 @@ class ClassicTerrainCreator implements TerrainCreator{
   
   void addDirt(int x, int y, int level) {
     int middleBlock;
-    int bottomBlock = 2; //Stone
+    int bottomBlock = MAT_STONE;
     if(glacier) {
-      middleBlock = 8; //Ice
+      middleBlock = MAT_ICE;
     } else if (desert) {
-      middleBlock = 11; //Sand
+      middleBlock = MAT_SAND;
     } else {
-      middleBlock = 6; //Dirt
+      middleBlock = MAT_DIRT;
     }
     
     for(int currentLevel = level ; currentLevel >= 0; currentLevel--) {
@@ -99,10 +99,6 @@ class ClassicTerrainCreator implements TerrainCreator{
         setBlock(x, y, currentLevel, bottomBlock);
       }
     }
-    
-    //if(snow) {
-    //  terrain[x][y][level + 1] = 7; //Snow
-    //}
   }
   
   void addPlant(int x, int y, int z) {
@@ -138,18 +134,18 @@ class ClassicTerrainCreator implements TerrainCreator{
 //          int currentX = plantX + x;
 //          int currentY = plantY + y;
 //          int currentZ = plantZ + z;
-//          if(getBlock(currentX, currentY, currentZ) == 0) {
+//          if(getBlock(currentX, currentY, currentZ) == MAT_EMPTY) {
 //            setBlock(currentX, currentY, currentZ, plantModel[plantX][plantY][plantZ]);
 //            
-//            if(plantZ == 0 && plantModel[plantX][plantY][plantZ] != 0
-//              && getBlock(currentX, currentY, currentZ - 1) == 0){ //If there is empty space under the plant
+//            if(plantZ == 0 && plantModel[plantX][plantY][plantZ] != MAT_EMPTY
+//              && getBlock(currentX, currentY, currentZ - 1) == MAT_EMPTY){ //If there is empty space under the plant
 //              println("Dirt fill start");
 //              for(int z1 = currentZ - 1; z1 >= 0; z1--) { //Fill the empty space with dirt
-//                if(getBlock(currentX, currentY, z1) != 0) {
+//                if(getBlock(currentX, currentY, z1) != MAT_EMPTY) {
 //                  break;
 //                }
 //                
-//                setBlock(currentX, currentY, z1, 6); //Dirt
+//                setBlock(currentX, currentY, z1, MAT_DIRT);
 //                println("dirt");
 //              }
 //            }
@@ -162,25 +158,25 @@ class ClassicTerrainCreator implements TerrainCreator{
   
   void createErosionDepth() {
     erosionDepth = new int[13];
-    erosionDepth[2] = 3; //Stone
-    erosionDepth[5] = 1; //Grass
-    erosionDepth[6] = 4; //Dirt
-    erosionDepth[11] = 4;//Sand
-    erosionDepth[12] = 3;//Clay
+    erosionDepth[MAT_STONE] = 3;
+    erosionDepth[MAT_GRASS] = 1;
+    erosionDepth[MAT_DIRT] = 4;
+    erosionDepth[MAT_SAND] = 4;
+    erosionDepth[MAT_CLAY] = 3;
   }
   
   void addWater(int x, int y) {
     for(int z = 0; z < waterLevel; z++) {
       int currentBlock = terrain[x][y][z];
-      if(currentBlock == 0) {
-        terrain[x][y][z] = 1; //Water
+      if(currentBlock == MAT_EMPTY) {
+        terrain[x][y][z] = MAT_WATER;
       }
     }
     
     if(snow && waterLevel != 0) {
       int z = waterLevel - 1;
-      if(terrain[x][y][z] == 1) {
-        terrain[x][y][z] = 8; //Ice
+      if(terrain[x][y][z] == MAT_WATER) {
+        terrain[x][y][z] = MAT_ICE;
       }
     }
   }
@@ -196,9 +192,9 @@ class ClassicTerrainCreator implements TerrainCreator{
   void addSnow(int x, int y) {
     for(int level = size - 1; level >= 0; level--) {
       int currentBlock = terrain[x][y][level];
-      if(currentBlock != 0) { //Nothing
-        if(currentBlock != 1 && level < size - 1) { //Water
-          terrain[x][y][level + 1] = 7; //Snow
+      if(currentBlock != MAT_EMPTY) {
+        if(currentBlock != MAT_WATER && level < size - 1) {
+          terrain[x][y][level + 1] = MAT_SNOW;
         }
         break;
       }
