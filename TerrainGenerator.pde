@@ -35,7 +35,7 @@ import g4p_controls.*;
 // Floating trees can occur, and trees can form below ground level
 
 TerrainInfo tInfo;
-int[][][] model;
+int[][][] model = null;
 int size = 24;
 int cubeSize = 12;
 
@@ -82,23 +82,24 @@ void generateTerrain() {
   sInfo.printInfo();
   
   createRenderTerrain(sInfo);
-  //drawLogo();
+  
+  setupRenderer();
 }
 
 void createRenderTerrain(SeasonInfo sInfo) {
   TerrainCreator creator = new ClassicTerrainCreator();
   model = creator.createTerrain(tInfo, sInfo);
   guiSetSeason(sInfo.getSeason());
-  
-  render3d();
 }
 
-void render3d() {
+void setupRenderer() {
   renderer3d = new PeasyRender(this, cubeSize, size);
-  renderDraw();
 }
 
 void renderDraw() {
+  if(renderer3d == null)
+    setupRenderer();
+  
   //hint(DISABLE_DEPTH_TEST);
   //hint(ENABLE_DEPTH_TEST);
   //PJOGL pgl;
@@ -128,12 +129,10 @@ void drawBlockTest() {
       }
     }
   }
-  
-  render3d();
 }
 
 void draw() {
-  if(renderer3d == null) {
+  if(model == null) {
     background(224);
     return;
   }
