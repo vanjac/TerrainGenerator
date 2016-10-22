@@ -88,6 +88,7 @@ void generateTerrain() {
 void createRenderTerrain(SeasonInfo sInfo) {
   TerrainCreator creator = new ClassicTerrainCreator();
   model = creator.createTerrain(tInfo, sInfo);
+  guiSetSeason(sInfo.getSeason());
   
   render3d();
 }

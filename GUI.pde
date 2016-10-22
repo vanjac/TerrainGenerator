@@ -10,6 +10,9 @@ GButton btnSeason4;
 GLabel lblSize;
 GCustomSlider sdrSize;
 
+final color defaultSeasonButtonColor = color(63, 127, 191);
+final color selectedSeasonButtonColor = color(0, 255, 0);
+
 void makeGui() {
   txfSeed = new GTextField(this, 0, 0, 256, 24);
   txfSeed.setText("Seed.");
@@ -21,6 +24,7 @@ void makeGui() {
   btnSeason2 = new GButton(this, 64, 56, 64, 24, "Spring");
   btnSeason3 = new GButton(this, 128, 56, 64, 24, "Summer");
   btnSeason4 = new GButton(this, 192, 56, 64, 24, "Fall");
+  clearSeasonButtonColors();
   
   lblSize = new GLabel(this, width - 256, 0, 128, 16, "Terrain Size:");
   lblSize.setTextAlign(GAlign.LEFT, null);
@@ -56,4 +60,29 @@ void handleButtonEvents(GButton button, GEvent event) {
 
 int getTerrainSize() {
   return sdrSize.getValueI();
+}
+
+void guiSetSeason(int season) {
+  clearSeasonButtonColors();
+  switch(season) {
+    case SEASON_WINTER:
+      btnSeason1.setLocalColor(4, selectedSeasonButtonColor);
+      break;
+    case SEASON_SPRING:
+      btnSeason2.setLocalColor(4, selectedSeasonButtonColor);
+      break;
+    case SEASON_SUMMER:
+      btnSeason3.setLocalColor(4, selectedSeasonButtonColor);
+      break;
+    case SEASON_FALL:
+      btnSeason4.setLocalColor(4, selectedSeasonButtonColor);
+      break;
+  }
+}
+
+void clearSeasonButtonColors() {
+  btnSeason1.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeason2.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeason3.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeason4.setLocalColor(4, defaultSeasonButtonColor);
 }
