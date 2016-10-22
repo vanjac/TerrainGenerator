@@ -27,7 +27,6 @@ class IsometricRender implements Render3d {
   float cubeSize;
   
   IsometricRender(float cubeSize) {
-    initCubeColors();
     this.cubeSize = cubeSize;
   }
   
@@ -108,8 +107,6 @@ class PeasyRender implements Render3d {
     
     cam.rotateY(0.5);
     cam.rotateX(0.75);
-    
-    initCubeColors();
   }
   
   public void render(int[][][] render, int renderSize) {
