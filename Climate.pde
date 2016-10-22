@@ -78,9 +78,9 @@ class Weather {
     this.season = season;
     humidity = climate.getHumidity();
     temperature = climate.getTemperature();
-    if(season == 1) {
+    if(season == SEASON_WINTER) {
       temperature -= 16;
-    } else if (season == 3) {
+    } else if (season == SEASON_SUMMER) {
       temperature += 16;
     }
   }

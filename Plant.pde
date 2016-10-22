@@ -104,16 +104,16 @@ class Tree implements Plant {
     this.terrain = terrain;
     //center = ((float)leavesWidth - 1) / 2;
     center = 0;
-    if(season.getSeason() == 4) {
+    if(season.getSeason() == SEASON_FALL) {
       leaves = MAT_DEAD_LEAVES;
     } else {
       leaves = MAT_LEAVES;
     }
-    if(season.getSeason() != 1) {
+    if(season.getSeason() != SEASON_WINTER) {
       drawLowerLeaves();
     }
     drawTrunk();
-    if(season.getSeason() != 1) {
+    if(season.getSeason() != SEASON_WINTER) {
       drawUpperLeaves();
     }
     
@@ -155,7 +155,7 @@ class Flower implements Plant {
       return;
     }
     
-    if(season.getSeason() == 2) {
+    if(season.getSeason() == SEASON_SPRING) {
       if(random(1) <= 0.0625) {
         setBlockWithoutReplace(terrain, x, y, z + 1, round(random(MAT_RED_FLOWER, MAT_YELLOW_FLOWER)));
       }
@@ -179,7 +179,7 @@ class Cactus implements Plant {
   
   void drawPlant(int[][][] terrain, int x, int y, int z, SeasonInfo season) {
     drawBlockBlock(terrain, MAT_CACTUS, x, y, z, x, y, z + cactusHeight - 1); //Cactus
-    if(flowering && season.getSeason() == 2) {
+    if(flowering && season.getSeason() == SEASON_SPRING) {
       setBlockWithoutReplace(terrain, x, y, z + cactusHeight, round(random(MAT_RED_FLOWER, MAT_YELLOW_FLOWER)));
     }
   }
