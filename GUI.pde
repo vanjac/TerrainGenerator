@@ -28,7 +28,7 @@ void makeGui() {
   
   sdrSize = new GCustomSlider(this, width - 256, 16, 256, 48, null);
   sdrSize.setShowDecor(false, false, true, true);
-  sdrSize.setLimits(24, 8, 48);
+  sdrSize.setLimits(24, 8, 64);
 }
 
 void handleButtonEvents(GButton button, GEvent event) {
