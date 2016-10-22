@@ -21,6 +21,7 @@ void initCubeColors() {
 
 interface Render3d {
   void render(int[][][] render, int renderSize);
+  void destroy();
 }
 
 class IsometricRender implements Render3d {
@@ -28,6 +29,10 @@ class IsometricRender implements Render3d {
   
   IsometricRender(float cubeSize) {
     this.cubeSize = cubeSize;
+  }
+  
+  void destroy() {
+    
   }
   
   public void render(int[][][] render, int renderSize) {
@@ -109,6 +114,10 @@ class PeasyRender implements Render3d {
     cam.rotateX(0.75);
   }
   
+  void destroy() {
+    cam.setActive(false);
+  }
+  
   public void render(int[][][] render, int renderSize) {
     background(160,160,160);
     noStroke();
@@ -146,6 +155,66 @@ class PeasyRender implements Render3d {
     pushMatrix();
     translate(x * size, (0 - z) * size + (size/4), y * size);
     box(size / 2);
+    popMatrix();
+  }
+}
+
+class PointCloudRender implements Render3d {
+  PeasyCam cam;
+  float cubeSize;
+  
+  PointCloudRender(processing.core.PApplet applet, int renderSize) {
+    cubeSize = 4;
+    cam = new PeasyCam(applet, 3 * renderSize * cubeSize);
+    cam.setMinimumDistance(renderSize * cubeSize);
+    cam.setMaximumDistance(12 * renderSize * cubeSize);
+    cam.setActive(true);
+    
+    cam.rotateY(0.5);
+    cam.rotateX(0.75);
+  }
+  
+  void destroy() {
+    cam.setActive(false);
+  }
+  
+  public void render(int[][][] render, int renderSize) {
+    background(160,160,160);
+    directionalLight(255,255,255,-.5,1,-.2);
+    ambientLight(192,192,192);
+    strokeWeight(4);
+    for(int z = 0; z < renderSize; z++) {
+      for(int y = 0; y < renderSize; y++) {
+        for(int x = 0; x < renderSize; x++) {
+          int currentBlock = render[x][y][z];
+          if(currentBlock != 0) {
+            
+            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
+              drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
+            } else {
+              drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
+            }
+          }
+        }
+      }
+    }
+    
+    noLights();
+  }
+  
+  void drawCube3d(int x, int y, int z, float size, color c) {
+    stroke(c);
+    pushMatrix();
+    translate(x * size, (0 - z) * size, y * size);
+    point(0,0,0);
+    popMatrix();
+  }
+  
+  void drawSmallCube3d(int x, int y, int z, float size, color c) {
+    stroke(c);
+    pushMatrix();
+    translate(x * size, (0 - z) * size + (size/4), y * size);
+    point(0,0,0);
     popMatrix();
   }
 }
