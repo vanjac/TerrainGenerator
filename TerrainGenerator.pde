@@ -36,7 +36,6 @@ import g4p_controls.*;
 
 TerrainInfo tInfo;
 int[][][] model = null;
-int size = 24;
 int cubeSize = 12;
 
 Render3d renderer3d;
@@ -56,22 +55,29 @@ void settings() {
   }
 }
 
-void generateWithSeed(long seed) {
-  randomSeed(seed);
-  println("Seed: " + seed);
-  generateTerrain();
+void draw() {
+  if(model == null) {
+    background(224);
+    return;
+  }
+  renderDraw();
 }
 
-int generateRandom() {
-  int seed = (int)random(-2147483648, 2147483647);
+void generateRandom() {
+  long seed = (long)random(-2147483648, 2147483647);
   generateWithSeed(seed);
-  return seed;
+}
+
+void generateWithSeed(long seed) {
+  randomSeed(seed);
+  guiSetSeed(seed);
+  generateTerrain();
 }
 
 void generateTerrain() {
   println("\n");
   
-  size = getTerrainSize();
+  int size = guiGetTerrainSize();
   
   tInfo = new TerrainInfo(size);
   Randomizer randomizer = new ClassicRandomizer(new MidpointDisplacement());
@@ -86,6 +92,14 @@ void generateTerrain() {
   setupRenderer();
 }
 
+void switchSeason(int season) {
+  if(tInfo != null) {
+    SeasonInfo sInfo = new SeasonInfo(tInfo, season);
+    sInfo.printInfo();
+    createRenderTerrain(sInfo);
+  }
+}
+
 void createRenderTerrain(SeasonInfo sInfo) {
   TerrainCreator creator = new ClassicTerrainCreator();
   model = creator.createTerrain(tInfo, sInfo);
@@ -93,7 +107,7 @@ void createRenderTerrain(SeasonInfo sInfo) {
 }
 
 void setupRenderer() {
-  renderer3d = new PeasyRender(this, cubeSize, size);
+  renderer3d = new PeasyRender(this, cubeSize, tInfo.getSize());
 }
 
 void renderDraw() {
@@ -109,18 +123,11 @@ void renderDraw() {
   //gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
   //gl.glEnable(GL.GL_DEPTH_TEST);
   //endPGL();
-  renderer3d.render(model, cubeSize, size);
-}
-
-void switchSeason(int season) {
-  if(tInfo != null) {
-    SeasonInfo sInfo = new SeasonInfo(tInfo, season);
-    sInfo.printInfo();
-    createRenderTerrain(sInfo);
-  }
+  renderer3d.render(model, cubeSize, tInfo.getSize());
 }
 
 void drawBlockTest() {
+  int size = 24;
   model = new int[size][size][size];
   for(int z = 0; z < NUM_MATERIALS; z++) {
     for(int y = 0; y < size; y++) {
@@ -129,12 +136,4 @@ void drawBlockTest() {
       }
     }
   }
-}
-
-void draw() {
-  if(model == null) {
-    background(224);
-    return;
-  }
-  renderDraw();
 }

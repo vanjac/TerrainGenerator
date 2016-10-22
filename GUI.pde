@@ -37,7 +37,7 @@ void makeGui() {
 
 void handleButtonEvents(GButton button, GEvent event) {
   if (button == btnGenerate && event == GEvent.CLICKED) {
-    txfSeed.setText(str(generateRandom()));
+    generateRandom();
   }
   if (button == btnGenerateSeed && event == GEvent.CLICKED) {
     int seed = int(txfSeed.getText());
@@ -58,7 +58,7 @@ void handleButtonEvents(GButton button, GEvent event) {
   }
 }
 
-int getTerrainSize() {
+int guiGetTerrainSize() {
   return sdrSize.getValueI();
 }
 
@@ -85,4 +85,9 @@ void clearSeasonButtonColors() {
   btnSeason2.setLocalColor(4, defaultSeasonButtonColor);
   btnSeason3.setLocalColor(4, defaultSeasonButtonColor);
   btnSeason4.setLocalColor(4, defaultSeasonButtonColor);
+}
+
+void guiSetSeed(long seed) {
+  println("Seed: " + seed);
+  txfSeed.setText(String.format("%d", seed));
 }
