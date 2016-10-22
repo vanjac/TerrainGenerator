@@ -36,7 +36,6 @@ import g4p_controls.*;
 
 TerrainInfo tInfo;
 int[][][] model = null;
-int cubeSize = 12;
 
 Render3d renderer3d;
 
@@ -48,10 +47,8 @@ void setup() {
 void settings() {
   if(displayHeight >= 832) {
     size(768, 768, P3D);
-    cubeSize = 12;
   } else {
     size(512, 512, P3D);
-    cubeSize = 8;
   }
 }
 
@@ -107,7 +104,7 @@ void createRenderTerrain(SeasonInfo sInfo) {
 }
 
 void setupRenderer() {
-  renderer3d = new PeasyRender(this, cubeSize, tInfo.getSize());
+  renderer3d = new PeasyRender(this, tInfo.getSize());
 }
 
 void renderDraw() {
@@ -123,7 +120,7 @@ void renderDraw() {
   //gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
   //gl.glEnable(GL.GL_DEPTH_TEST);
   //endPGL();
-  renderer3d.render(model, cubeSize, tInfo.getSize());
+  renderer3d.render(model, tInfo.getSize());
 }
 
 void drawBlockTest() {

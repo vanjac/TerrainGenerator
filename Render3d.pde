@@ -20,15 +20,18 @@ void initCubeColors() {
 }
 
 interface Render3d {
-  void render(int[][][] render, float cubeSize, int renderSize);
+  void render(int[][][] render, int renderSize);
 }
 
 class IsometricRender implements Render3d {
-  IsometricRender() {
+  float cubeSize;
+  
+  IsometricRender(float cubeSize) {
     initCubeColors();
+    this.cubeSize = cubeSize;
   }
   
-  public void render(int[][][] render, float cubeSize, int renderSize) {
+  public void render(int[][][] render, int renderSize) {
     background(255);
     for(int z = 0; z < renderSize; z++) {
       for(int y = 0; y < renderSize; y++) {
@@ -94,8 +97,10 @@ class IsometricRender implements Render3d {
 
 class PeasyRender implements Render3d {
   PeasyCam cam;
+  float cubeSize;
   
-  PeasyRender(processing.core.PApplet applet, float cubeSize, int renderSize) {
+  PeasyRender(processing.core.PApplet applet, int renderSize) {
+    cubeSize = 12;
     cam = new PeasyCam(applet, 3 * renderSize * cubeSize);
     cam.setMinimumDistance(renderSize * cubeSize);
     cam.setMaximumDistance(12 * renderSize * cubeSize);
@@ -107,7 +112,7 @@ class PeasyRender implements Render3d {
     initCubeColors();
   }
   
-  public void render(int[][][] render, float cubeSize, int renderSize) {
+  public void render(int[][][] render, int renderSize) {
     background(160,160,160);
     noStroke();
     directionalLight(255,255,255,-.5,1,-.2);
