@@ -1,22 +1,22 @@
-color[] cubeColors;
+static color[] cubeColors;
 
-void initCubeColors() {
+static {
     cubeColors = new color[NUM_MATERIALS];
-    cubeColors[MAT_WATER] = color(0, 0, 255);
-    cubeColors[MAT_STONE] = color(95, 95, 95);
-    cubeColors[MAT_WOOD] = color(111, 55, 0);
-    cubeColors[MAT_LEAVES] = color(0, 127, 0);
-    cubeColors[MAT_GRASS] = color(0, 191, 0);
-    cubeColors[MAT_DIRT] = color(127, 79, 0);
-    cubeColors[MAT_SNOW] = color(255, 255, 255);
-    cubeColors[MAT_ICE] = color(191, 255, 255);
-    cubeColors[MAT_DEAD_GRASS] = color(191, 191, 63);
-    cubeColors[MAT_SAND] = color(255, 191, 0);
-    cubeColors[MAT_CLAY] = color(143, 143, 143);
-    cubeColors[MAT_RED_FLOWER] = color(255, 0, 0);
-    cubeColors[MAT_YELLOW_FLOWER] = color(255, 255, 0);
-    cubeColors[MAT_DEAD_LEAVES] = color(191, 127, 0);
-    cubeColors[MAT_CACTUS] = color(0, 127, 0);
+    cubeColors[MAT_WATER] = #0000FF;
+    cubeColors[MAT_STONE] = #5F5F5F;
+    cubeColors[MAT_WOOD] = #6F3700;
+    cubeColors[MAT_LEAVES] = #007F00;
+    cubeColors[MAT_GRASS] = #00BF00;
+    cubeColors[MAT_DIRT] = #7F4F00;
+    cubeColors[MAT_SNOW] = #FFFFFF;
+    cubeColors[MAT_ICE] = #BFFFFF;
+    cubeColors[MAT_DEAD_GRASS] = #BFBF3F;
+    cubeColors[MAT_SAND] = #FFBF00;
+    cubeColors[MAT_CLAY] = #8F8F8F;
+    cubeColors[MAT_RED_FLOWER] = #FF0000;
+    cubeColors[MAT_YELLOW_FLOWER] = #FFFF00;
+    cubeColors[MAT_DEAD_LEAVES] = #BF7F00;
+    cubeColors[MAT_CACTUS] = #007F00;
 }
 
 interface Render3d {

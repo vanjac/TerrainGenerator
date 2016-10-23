@@ -42,7 +42,6 @@ Render3d renderer3d;
 
 void setup() {
   makeGui();
-  initCubeColors();
 }
 
 void settings() {
