@@ -108,52 +108,6 @@ class ClassicTerrainCreator implements TerrainCreator{
     }
     
     currentPlant.drawPlant(terrain, x, y, z, sInfo);
-    
-//    int[][][] plantModel = currentPlant.drawPlant(season);
-//    int plantXLength = plantModel.length;
-//    int plantYLength = plantModel[0].length;
-//    int plantZLength = plantModel[0][0].length;
-//    
-//    if(plantXLength > 1 || plantYLength > 1) { //Reposition the plant so it is on the ground
-//      ArrayList<Coordinate3d> lowestPoints = lowestPoints(plantModel);
-//      int highestX = lowestPoints.get(0).x;
-//      int highestY = lowestPoints.get(0).y;
-//      int highestZ = lowestPoints.get(0).z;
-//      for(int i = 0; i < lowestPoints.size(); i++) {
-//        Coordinate3d point = lowestPoints.get(i);
-//        
-//        if(false) {
-//          
-//        }
-//      }
-//    }
-//    
-//    for(int plantZ = 0; plantZ < plantZLength; plantZ++) {
-//      for(int plantY = 0; plantY < plantYLength; plantY++) {
-//        for(int plantX = 0; plantX < plantXLength; plantX++) {
-//          int currentX = plantX + x;
-//          int currentY = plantY + y;
-//          int currentZ = plantZ + z;
-//          if(getBlock(currentX, currentY, currentZ) == MAT_EMPTY) {
-//            setBlock(currentX, currentY, currentZ, plantModel[plantX][plantY][plantZ]);
-//            
-//            if(plantZ == 0 && plantModel[plantX][plantY][plantZ] != MAT_EMPTY
-//              && getBlock(currentX, currentY, currentZ - 1) == MAT_EMPTY){ //If there is empty space under the plant
-//              println("Dirt fill start");
-//              for(int z1 = currentZ - 1; z1 >= 0; z1--) { //Fill the empty space with dirt
-//                if(getBlock(currentX, currentY, z1) != MAT_EMPTY) {
-//                  break;
-//                }
-//                
-//                setBlock(currentX, currentY, z1, MAT_DIRT);
-//                println("dirt");
-//              }
-//            }
-//            
-//          }
-//        }
-//      }
-//    }
   }
   
   void createErosionDepth() {

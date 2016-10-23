@@ -41,17 +41,10 @@ class Climate {
   void printClimate() {
     println("Temperature: " + temperature);
     println("Humidity: " + humidity);
-//    if(hotDesertClimate()) {
-//      println("Hot desert climate.");
-//    }
     if(coldDesertClimate()) {
       println("Cold desert climate.");
     }
   }
-  
-//  boolean hotDesertClimate() {
-//    return temperature >= 32 && humidity < 4;
-//  }
   
   boolean coldDesertClimate() {
     return temperature <= 0 && humidity < 4;
