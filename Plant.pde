@@ -90,7 +90,7 @@ class Tree implements Plant {
   int[][][] terrain;
   float center;
   
-  Tree(Climate climate) {
+  Tree() {
     trunkWidth = 1;
     trunkHeight = (int)random(6, 10);
     leavesWidth = 3;

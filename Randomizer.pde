@@ -96,7 +96,7 @@ class ClassicRandomizer implements Randomizer {
     for(int y = 0; y < size; y++) {
       for(int x = 0; x < size; x++) {
         if(random(1) <= treeProb) {
-          plants[x][y] = new Tree(climate);
+          plants[x][y] = new Tree();
         } else
         if(random(1) <= cactusProb) {
           plants[x][y] = new Cactus();

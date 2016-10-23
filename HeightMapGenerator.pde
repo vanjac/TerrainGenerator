@@ -2,22 +2,6 @@ interface HeightMapGenerator {
   int[][] generate(int size, float depth, float hills);
 }
 
-class NoiseGenerator implements HeightMapGenerator {
-  int[][] generate(int size, float depth, float hills) {
-    int[][] heightMap = new int[size][size];
-    
-    noiseSeed(int(random(65535)));
-    
-    for(int y = 0; y < size; y++) {
-      for(int x = 0; x < size; x++) {
-        heightMap[x][y] = int((noise(x, y) - 0.5) * depth);
-      }
-    }
-    
-    return heightMap;
-  }
-}
-
 class MidpointDisplacement implements HeightMapGenerator {
   int size;
   float depth;
