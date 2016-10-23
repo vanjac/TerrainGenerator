@@ -18,3 +18,11 @@ final int MAT_DEAD_LEAVES = 16;
 final int MAT_CACTUS = 17;
 
 final int NUM_MATERIALS = 18;
+
+boolean isSmallBlock(int mat) {
+  return mat == MAT_RED_FLOWER || mat == MAT_YELLOW_FLOWER;
+}
+
+boolean isFullBlock(int mat) {
+  return mat != 0 && !isSmallBlock(mat);
+}

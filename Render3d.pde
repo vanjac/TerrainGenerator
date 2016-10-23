@@ -43,7 +43,7 @@ class IsometricRender implements Render3d {
           int currentBlock = render[x][y][z];
           if(currentBlock != 0) {
             
-            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
+            if(isSmallBlock(currentBlock)) {
               drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
             } else {
               drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
@@ -127,9 +127,16 @@ class PeasyRender implements Render3d {
       for(int y = 0; y < renderSize; y++) {
         for(int x = 0; x < renderSize; x++) {
           int currentBlock = render[x][y][z];
-          if(currentBlock != 0) {
+          // check if the block exists and there is an open space on one side (it is visible)
+          if( currentBlock != 0 &&
+              ((!isFullBlock(getBlock(render, x-1, y, z))) ||
+               (!isFullBlock(getBlock(render, x+1, y, z))) ||
+               (!isFullBlock(getBlock(render, x, y-1, z))) ||
+               (!isFullBlock(getBlock(render, x, y+1, z))) ||
+               (!isFullBlock(getBlock(render, x, y, z-1))) ||
+               (!isFullBlock(getBlock(render, x, y, z+1))) ) ) {
             
-            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
+            if(isSmallBlock(currentBlock)) {
               drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
             } else {
               drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
@@ -187,9 +194,15 @@ class PointCloudRender implements Render3d {
       for(int y = 0; y < renderSize; y++) {
         for(int x = 0; x < renderSize; x++) {
           int currentBlock = render[x][y][z];
-          if(currentBlock != 0) {
+          if( currentBlock != 0 &&
+              ((!isFullBlock(getBlock(render, x-1, y, z))) ||
+               (!isFullBlock(getBlock(render, x+1, y, z))) ||
+               (!isFullBlock(getBlock(render, x, y-1, z))) ||
+               (!isFullBlock(getBlock(render, x, y+1, z))) ||
+               (!isFullBlock(getBlock(render, x, y, z-1))) ||
+               (!isFullBlock(getBlock(render, x, y, z+1))) ) ) {
             
-            if(currentBlock == MAT_RED_FLOWER || currentBlock == MAT_YELLOW_FLOWER) {
+            if(isSmallBlock(currentBlock)) {
               drawSmallCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);
             } else {
               drawCube3d(x, y, z, cubeSize, cubeColors[currentBlock]);

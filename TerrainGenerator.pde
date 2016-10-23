@@ -107,7 +107,7 @@ void createRenderTerrain(SeasonInfo sInfo) {
 void setupRenderer() {
   if(renderer3d != null)
     renderer3d.destroy();
-  if(tInfo.getSize() > 64) {
+  if(tInfo.getSize() > 96) {
     renderer3d = new PointCloudRender(this, tInfo.getSize());
   } else {
     renderer3d = new PeasyRender(this, tInfo.getSize());
