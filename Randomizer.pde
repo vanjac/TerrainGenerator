@@ -10,23 +10,20 @@ class ClassicRandomizer implements Randomizer {
   TerrainInfo tInfo;
   HeightMapGenerator hmGenerate;
   
-  int[] erosionTable;
-  void makeErosionTable() {
-    erosionTable = new int[9];
-    erosionTable[0] = MAT_STONE;
-    erosionTable[1] = MAT_GRASS;
-    erosionTable[2] = MAT_DIRT;
-    erosionTable[3] = MAT_SAND;
-    erosionTable[4] = MAT_SAND;
-    erosionTable[5] = MAT_SAND;
-    erosionTable[6] = MAT_DIRT;
-    erosionTable[7] = MAT_CLAY;
-    erosionTable[8] = MAT_CLAY;
-  }
+  int[] erosionTable = {
+    MAT_STONE,
+    MAT_GRASS,
+    MAT_DIRT,
+    MAT_SAND,
+    MAT_SAND,
+    MAT_SAND,
+    MAT_DIRT,
+    MAT_CLAY,
+    MAT_CLAY
+  };
   
   ClassicRandomizer(HeightMapGenerator hmGenerate) {
     this.hmGenerate = hmGenerate;
-    makeErosionTable();
   }
   
   void randomize(TerrainInfo tInfo) {
