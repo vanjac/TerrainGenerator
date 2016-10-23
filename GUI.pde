@@ -24,6 +24,10 @@ void makeGui() {
   btnSeasonSpring = new GButton(this, 64, 56, 64, 24, "Spring");
   btnSeasonSummer = new GButton(this, 128, 56, 64, 24, "Summer");
   btnSeasonFall = new GButton(this, 192, 56, 64, 24, "Fall");
+  btnSeasonWinter.setVisible(false);
+  btnSeasonSpring.setVisible(false);
+  btnSeasonSummer.setVisible(false);
+  btnSeasonFall.setVisible(false);
   clearSeasonButtonColors();
   
   lblSize = new GLabel(this, width - 256, 0, 128, 16, "Terrain Size:");
@@ -64,6 +68,10 @@ int guiGetTerrainSize() {
 
 void guiSetSeason(int season) {
   clearSeasonButtonColors();
+  btnSeasonWinter.setVisible(true);
+  btnSeasonSpring.setVisible(true);
+  btnSeasonSummer.setVisible(true);
+  btnSeasonFall.setVisible(true);
   switch(season) {
     case SEASON_WINTER:
       btnSeasonWinter.setLocalColor(4, selectedSeasonButtonColor);
