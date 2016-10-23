@@ -99,3 +99,8 @@ void guiSetSeed(long seed) {
   println("Seed: " + seed);
   txfSeed.setText(String.format("%d", seed));
 }
+
+void keyPressed() {
+  if(key == ' ')
+    generateRandom();
+}
