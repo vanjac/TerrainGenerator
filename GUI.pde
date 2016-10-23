@@ -1,11 +1,11 @@
 GTextField txfSeed;
-GButton btnGenerate;
+GButton btnGenerateRandom;
 GButton btnGenerateSeed;
 
-GButton btnSeason1;
-GButton btnSeason2;
-GButton btnSeason3;
-GButton btnSeason4;
+GButton btnSeasonWinter;
+GButton btnSeasonSpring;
+GButton btnSeasonSummer;
+GButton btnSeasonFall;
 
 GLabel lblSize;
 GCustomSlider sdrSize;
@@ -17,13 +17,13 @@ void makeGui() {
   txfSeed = new GTextField(this, 0, 0, 256, 24);
   txfSeed.setText("Seed.");
   
-  btnGenerate = new GButton(this, 0, 24, 128, 24, "Generate Random");
+  btnGenerateRandom = new GButton(this, 0, 24, 128, 24, "Generate Random");
   btnGenerateSeed = new GButton(this, 128, 24, 128, 24, "Generate w/ Seed");
   
-  btnSeason1 = new GButton(this, 0, 56, 64, 24, "Winter");
-  btnSeason2 = new GButton(this, 64, 56, 64, 24, "Spring");
-  btnSeason3 = new GButton(this, 128, 56, 64, 24, "Summer");
-  btnSeason4 = new GButton(this, 192, 56, 64, 24, "Fall");
+  btnSeasonWinter = new GButton(this, 0, 56, 64, 24, "Winter");
+  btnSeasonSpring = new GButton(this, 64, 56, 64, 24, "Spring");
+  btnSeasonSummer = new GButton(this, 128, 56, 64, 24, "Summer");
+  btnSeasonFall = new GButton(this, 192, 56, 64, 24, "Fall");
   clearSeasonButtonColors();
   
   lblSize = new GLabel(this, width - 256, 0, 128, 16, "Terrain Size:");
@@ -36,7 +36,7 @@ void makeGui() {
 }
 
 void handleButtonEvents(GButton button, GEvent event) {
-  if (button == btnGenerate && event == GEvent.CLICKED) {
+  if (button == btnGenerateRandom && event == GEvent.CLICKED) {
     generateRandom();
   }
   if (button == btnGenerateSeed && event == GEvent.CLICKED) {
@@ -44,16 +44,16 @@ void handleButtonEvents(GButton button, GEvent event) {
     generateWithSeed(seed);
   }
   
-  if (button == btnSeason1 && event == GEvent.CLICKED) {
+  if (button == btnSeasonWinter && event == GEvent.CLICKED) {
     switchSeason(SEASON_WINTER);
   }
-  if (button == btnSeason2 && event == GEvent.CLICKED) {
+  if (button == btnSeasonSpring && event == GEvent.CLICKED) {
     switchSeason(SEASON_SPRING);
   }
-  if (button == btnSeason3 && event == GEvent.CLICKED) {
+  if (button == btnSeasonSummer && event == GEvent.CLICKED) {
     switchSeason(SEASON_SUMMER);
   }
-  if (button == btnSeason4 && event == GEvent.CLICKED) {
+  if (button == btnSeasonFall && event == GEvent.CLICKED) {
     switchSeason(SEASON_FALL);
   }
 }
@@ -66,25 +66,25 @@ void guiSetSeason(int season) {
   clearSeasonButtonColors();
   switch(season) {
     case SEASON_WINTER:
-      btnSeason1.setLocalColor(4, selectedSeasonButtonColor);
+      btnSeasonWinter.setLocalColor(4, selectedSeasonButtonColor);
       break;
     case SEASON_SPRING:
-      btnSeason2.setLocalColor(4, selectedSeasonButtonColor);
+      btnSeasonSpring.setLocalColor(4, selectedSeasonButtonColor);
       break;
     case SEASON_SUMMER:
-      btnSeason3.setLocalColor(4, selectedSeasonButtonColor);
+      btnSeasonSummer.setLocalColor(4, selectedSeasonButtonColor);
       break;
     case SEASON_FALL:
-      btnSeason4.setLocalColor(4, selectedSeasonButtonColor);
+      btnSeasonFall.setLocalColor(4, selectedSeasonButtonColor);
       break;
   }
 }
 
 void clearSeasonButtonColors() {
-  btnSeason1.setLocalColor(4, defaultSeasonButtonColor);
-  btnSeason2.setLocalColor(4, defaultSeasonButtonColor);
-  btnSeason3.setLocalColor(4, defaultSeasonButtonColor);
-  btnSeason4.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeasonWinter.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeasonSpring.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeasonSummer.setLocalColor(4, defaultSeasonButtonColor);
+  btnSeasonFall.setLocalColor(4, defaultSeasonButtonColor);
 }
 
 void guiSetSeed(long seed) {
